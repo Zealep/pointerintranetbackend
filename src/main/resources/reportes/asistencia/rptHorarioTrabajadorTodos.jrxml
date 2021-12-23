@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptHorarioTrabajadorTodos" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b102f40-c09a-4ce1-9f5b-b72f79826e66">
+	<property name="ireport.zoom" value="1.2100000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Serif" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="Detail" markup="none" pattern="0.00" fontName="Serif" fontSize="12"/>
+	<style name="Column header" forecolor="#666666" fontName="Serif" fontSize="12" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Serif" fontSize="18"/>
+	<style name="Crosstab Data Text" hAlign="Center" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="varEmpresa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varidTrabajador" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varFechaDesde" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varFechaHasta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varidCentroCosto" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varidArea" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varidTipoPlanilla" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varSucursal" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="varUsuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[CALL spu_ListaHorarioMarcacionTrabajadores
+($P{varEmpresa}, $P{varSucursal}, $P{varUsuario}, $P{varidTipoPlanilla}, $P{varidCentroCosto}, $P{varidArea}, $P{varidTrabajador}, $P{varFechaDesde}, $P{varFechaHasta});]]>
+	</queryString>
+	<field name="idTrabajador" class="java.lang.String"/>
+	<field name="varFechaDesde" class="java.lang.String"/>
+	<field name="varFechaHasta" class="java.lang.String"/>
+	<field name="NumeroDocumento" class="java.lang.String"/>
+	<field name="glsTrabajador" class="java.lang.String"/>
+	<field name="Empresa" class="java.lang.String"/>
+	<field name="DiaSemana" class="java.lang.String"/>
+	<field name="IdTipoMarca" class="java.lang.String"/>
+	<field name="TipoMarca" class="java.lang.String"/>
+	<field name="fechaMarcacion" class="java.sql.Timestamp"/>
+	<field name="HoraIngresoHorario" class="java.lang.String"/>
+	<field name="HoraIngresoPermiso" class="java.lang.String"/>
+	<field name="HoraMarca" class="java.lang.String"/>
+	<field name="MinutosTolerancia" class="java.lang.Integer"/>
+	<field name="HorarioIngresoTolerancia" class="java.lang.String"/>
+	<field name="tardanza" class="java.lang.String"/>
+	<field name="Sueldo" class="java.lang.String"/>
+	<field name="montoxMinuto" class="java.lang.String"/>
+	<field name="Permiso" class="java.lang.String"/>
+	<field name="descuentoTotal" class="java.lang.String"/>
+	<field name="Estado" class="java.lang.String"/>
+	<field name="H25" class="java.lang.Integer"/>
+	<field name="H35" class="java.lang.Integer"/>
+	<field name="H100" class="java.lang.Integer"/>
+	<field name="FechaCese" class="java.sql.Timestamp"/>
+	<field name="DiaCompesado" class="java.lang.String"/>
+	<variable name="TipoMarca" class="java.lang.String">
+		<variableExpression><![CDATA[$F{TipoMarca}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="103a1cb9-43cf-4c09-a1df-98b5a8ebf0ce" style="Title" mode="Transparent" x="281" y="12" width="263" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Hora de Marcacion de los Trabajadores]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="false">
+				<reportElement uuid="84952bb8-14ba-4b51-87bc-1931f92d1bbf" mode="Transparent" x="281" y="25" width="263" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De: "+ $F{varFechaDesde}  +"  Hasta: " + $F{varFechaHasta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="056bf198-0f3b-4c77-8ba9-e1f0600ad85e" style="Column header" x="702" y="0" width="100" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm.ss a">
+				<reportElement uuid="d9cf691d-1265-45b1-9c66-e1095a14d0c7" style="Column header" x="702" y="14" width="100" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="55946ef7-c3e8-48a0-9485-62bd64326dc9" mode="Transparent" x="0" y="0" width="240" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Empresa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="2" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement uuid="f3c0c571-8347-4eb8-b44a-caa9db8549b8" style="Column header" x="766" y="0" width="32" height="12"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06775e14-f102-49ce-b085-472b32e639a1" style="Column header" x="686" y="0" width="80" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2ce38302-2a37-4590-b020-8854bd91d0bd" x="1" y="0" width="100" height="13" forecolor="#666666"/>
+				<textElement/>
+				<text><![CDATA[Pointer ERP]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="145" splitType="Stretch">
+			<crosstab>
+				<reportElement uuid="6088af73-3da2-49a9-969c-cff090a088f1" positionType="Float" x="1" y="20" width="797" height="125"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement uuid="46ae25cb-e576-4dfd-bc18-c722fc25b4eb" style="Crosstab Data Text" mode="Transparent" x="0" y="20" width="102" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Colaborador]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="f74aba52-e76f-4074-9d40-51b9d498f3c9" style="Crosstab Data Text" mode="Transparent" x="102" y="20" width="43" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[D.N.I]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="2a90333a-9f9c-4a82-a265-56506916c002" style="Crosstab Data Text" mode="Transparent" x="145" y="20" width="71" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Fecha Marcacion]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="145ed2e3-982d-497b-9fff-dbb162a3fb2b" style="Crosstab Data Text" mode="Transparent" x="216" y="20" width="58" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Estado]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="7983a4f6-f9dc-4f3b-8d86-ec04d42a5678" style="Crosstab Data Text" mode="Transparent" x="274" y="20" width="19" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[C]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="9201ad6e-6a16-48cc-9ca5-8d9c804638d0" style="Crosstab Data Text" x="293" y="20" width="20" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[25%]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="842fa2ff-efe1-419d-bc46-e08ad95070b4" style="Crosstab Data Text" x="313" y="20" width="20" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[35%]]></text>
+						</staticText>
+						<staticText>
+							<reportElement uuid="9212c417-e47e-43f6-9efc-d9be973cfb4a" style="Crosstab Data Text" x="333" y="20" width="20" height="13"/>
+							<box>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<text><![CDATA[100%]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="glsTrabajador" width="102">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{glsTrabajador}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField isStretchWithOverflow="true">
+								<reportElement uuid="b497ee6c-ef34-4449-b555-a2457633f8f6" style="Crosstab Data Text" positionType="Float" stretchType="RelativeToTallestObject" x="4" y="0" width="98" height="13"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{glsTrabajador}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="NumeroDocumento" width="43">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{NumeroDocumento}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="aba948a3-cc3a-4c68-87e8-dd9fd854d465" style="Crosstab Data Text" x="0" y="0" width="43" height="13"/>
+								<textElement verticalAlignment="Middle">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{NumeroDocumento}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="9266f1be-0723-40a5-bc75-709612f1641f" x="0" y="0" width="70" height="0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total NumeroDocumento]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="FechaMarcacion" width="71">
+					<bucket class="java.sql.Timestamp">
+						<bucketExpression><![CDATA[$F{fechaMarcacion}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents>
+							<textField pattern="dd/MM/yyyy">
+								<reportElement uuid="a5b5d23d-4cad-47df-89ca-6112623237c7" x="0" y="0" width="71" height="13"/>
+								<box>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{FechaMarcacion}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="Estado" width="58">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{Estado}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents>
+							<textField>
+								<reportElement uuid="906e7e09-a5f8-4c57-95e9-585052626e5b" x="0" y="0" width="58" height="13"/>
+								<box>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{Estado}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="DiaCompensado" width="19">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{DiaCompesado}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents>
+							<textField>
+								<reportElement uuid="2a8a538e-2bcb-491b-81f8-643da0522333" style="Crosstab Data Text" x="0" y="0" width="19" height="13"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{DiaCompensado}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="H25" width="20">
+					<bucket class="java.lang.Integer">
+						<bucketExpression><![CDATA[$F{H25}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents>
+							<elementGroup>
+								<textField pattern="###0">
+									<reportElement uuid="d8b45c50-a1d8-40f5-9a31-02b08f0b8f5b" style="Crosstab Data Text" x="0" y="0" width="20" height="13"/>
+									<box>
+										<topPen lineWidth="0.5"/>
+										<leftPen lineWidth="0.5"/>
+										<bottomPen lineWidth="0.5"/>
+										<rightPen lineWidth="0.5"/>
+									</box>
+									<textElement verticalAlignment="Middle">
+										<font size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{H25}]]></textFieldExpression>
+								</textField>
+							</elementGroup>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="H35" width="20">
+					<bucket class="java.lang.Integer">
+						<bucketExpression><![CDATA[$F{H35}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents>
+							<textField pattern="###0">
+								<reportElement uuid="10ceb1e9-95a5-4c01-827a-6bd750b4c9f5" style="Crosstab Data Text" x="0" y="0" width="20" height="13"/>
+								<box>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{H35}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="H100" width="20">
+					<bucket class="java.lang.Integer">
+						<bucketExpression><![CDATA[$F{H100}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents>
+							<textField>
+								<reportElement uuid="63e10c5f-5fb7-4022-bde5-26c7d9733386" style="Crosstab Data Text" x="0" y="0" width="20" height="13"/>
+								<box>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{H100}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="TipoMarca" height="33" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{TipoMarca}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="1b930dfb-adbe-4898-a271-d8989c58ab25" style="Crosstab Data Text" x="125" y="20" width="31" height="13"/>
+								<box>
+									<topPen lineWidth="0.75"/>
+									<leftPen lineWidth="0.75"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.75"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Toler.]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="983ce904-c1fd-45d3-aa49-7ccf0f0e57ad" style="Crosstab Data Text" x="156" y="20" width="57" height="13"/>
+								<box>
+									<topPen lineWidth="0.75"/>
+									<leftPen lineWidth="0.75"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.75"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Diferencia]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="8871bc32-3980-4168-8434-9e81db659654" style="Crosstab Data Text" x="45" y="20" width="48" height="13"/>
+								<box>
+									<topPen lineWidth="0.75"/>
+									<leftPen lineWidth="0.75"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.75"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true" isItalic="false"/>
+								</textElement>
+								<text><![CDATA[Permiso]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="b63686c3-5243-4f59-b3f1-0bf8f44508a5" style="Crosstab Data Text" x="93" y="20" width="32" height="13"/>
+								<box>
+									<topPen lineWidth="0.75"/>
+									<leftPen lineWidth="0.75"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.75"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Marca]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="6683deba-304e-44b7-bd3f-2a21c56b4b6c" style="Crosstab Data Text" x="0" y="20" width="45" height="13"/>
+								<box>
+									<topPen lineWidth="0.75"/>
+									<leftPen lineWidth="0.75"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.75"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true" isItalic="false"/>
+								</textElement>
+								<text><![CDATA[Horario]]></text>
+							</staticText>
+							<textField>
+								<reportElement uuid="14000bf8-b2c0-4b54-bffe-5c00cd7a4920" style="Crosstab Data Text" x="0" y="0" width="213" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{TipoMarca}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="HoraIngresoHorarioMeasure" class="java.lang.String" calculation="First">
+					<measureExpression><![CDATA[$F{HoraIngresoHorario}]]></measureExpression>
+				</measure>
+				<measure name="HoraMarcameasure" class="java.lang.String" calculation="First">
+					<measureExpression><![CDATA[$F{HoraMarca}]]></measureExpression>
+				</measure>
+				<measure name="Tardanzameasure" class="java.lang.String" calculation="Count">
+					<measureExpression><![CDATA[$F{tardanza}]]></measureExpression>
+				</measure>
+				<measure name="Toleranciameasure" class="java.lang.Integer" calculation="First">
+					<measureExpression><![CDATA[$F{MinutosTolerancia}]]></measureExpression>
+				</measure>
+				<measure name="HoraIngresoPermiso" class="java.lang.String" calculation="Count">
+					<measureExpression><![CDATA[$F{HoraIngresoPermiso}]]></measureExpression>
+				</measure>
+				<crosstabCell width="213" height="13">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="bf55d0a7-e1f8-411f-81f9-22a45c30066f" style="Crosstab Data Text" x="0" y="0" width="45" height="13"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{HoraIngresoHorarioMeasure}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="eaa6f820-97dc-4abc-939b-d3a4840d5b10" style="Crosstab Data Text" positionType="Float" x="93" y="0" width="32" height="13"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{HoraMarcameasure}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="1038cd4c-1148-4500-82f7-79ceba3ccac4" style="Crosstab Data Text" positionType="Float" x="156" y="0" width="57" height="13"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{Tardanzameasure}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="2313eff6-1598-4478-8daf-966f37639980" style="Crosstab Data Text" x="125" y="0" width="31" height="13"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{Toleranciameasure}]]></textFieldExpression>
+						</textField>
+						<textField pattern="">
+							<reportElement uuid="56c98008-2249-42e2-8d62-3fe4b52a31a2" style="Crosstab Data Text" x="45" y="0" width="48" height="13"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{HoraIngresoPermiso}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="172" height="0" rowTotalGroup="glsTrabajador">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="13" columnTotalGroup="TipoMarca">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="123" height="0" rowTotalGroup="glsTrabajador" columnTotalGroup="TipoMarca">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="172" height="0" rowTotalGroup="NumeroDocumento">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="123" height="0" rowTotalGroup="NumeroDocumento" columnTotalGroup="TipoMarca">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="FechaMarcacion">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="FechaMarcacion" columnTotalGroup="TipoMarca">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="Estado">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="Estado" columnTotalGroup="TipoMarca">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="H25">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="H25" columnTotalGroup="TipoMarca">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="H35">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="H35" columnTotalGroup="TipoMarca">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="H100">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="H100" columnTotalGroup="TipoMarca">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="DiaCompensado">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="DiaCompensado" columnTotalGroup="TipoMarca">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>
