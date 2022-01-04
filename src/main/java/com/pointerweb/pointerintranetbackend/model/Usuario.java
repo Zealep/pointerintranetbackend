@@ -1,13 +1,30 @@
 package com.pointerweb.pointerintranetbackend.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "usuarios")
+@SqlResultSetMapping(
+        name="perfilMapping",
+        classes={
+                @ConstructorResult(
+                        targetClass= Perfil.class,
+                        columns={
+                                @ColumnResult(name="NombreCompleto",type = String.class),
+                                @ColumnResult(name="Cargo",type = String.class),
+                                @ColumnResult(name="Empresa",type = String.class),
+                                @ColumnResult(name="FechaIngreso",type = String.class),
+                                @ColumnResult(name="Correo",type = String.class),
+                                @ColumnResult(name="Telefonos",type = String.class),
+                                @ColumnResult(name="JefeDirecto",type = String.class),
+                                @ColumnResult(name="Cumpleanos",type = String.class)
+                        }
+                )
+        }
+)
+@NamedNativeQuery(name="Usuario.getDatosPerfil", query="CALL spu_Web_PerfilTrabajador(:varTrabajador)", resultSetMapping="perfilMapping")
 public class Usuario implements Serializable {
 
     @Id

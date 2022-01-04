@@ -23,6 +23,9 @@ public class Menu implements Serializable {
     @Column(name = "idModulo")
     private String idModulo;
 
+    @Column(name = "urlOperacion")
+    private String urlOperacion;
+
     public Long getOpmCod() {
         return opmCod;
     }
@@ -53,5 +56,13 @@ public class Menu implements Serializable {
 
     public void setIdModulo(String idModulo) {
         this.idModulo = idModulo;
+    }
+
+    public String getUrlOperacion() {
+        return urlOperacion;
+    }
+
+    public void setUrlOperacion(String urlOperacion) {
+        this.urlOperacion = urlOperacion;
     }
 }

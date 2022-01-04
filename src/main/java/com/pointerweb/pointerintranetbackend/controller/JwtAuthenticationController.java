@@ -3,6 +3,7 @@ package com.pointerweb.pointerintranetbackend.controller;
 import com.pointerweb.pointerintranetbackend.config.JwtTokenUtil;
 import com.pointerweb.pointerintranetbackend.model.JwtRequest;
 import com.pointerweb.pointerintranetbackend.model.JwtResponse;
+import com.pointerweb.pointerintranetbackend.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,6 +29,9 @@ public class JwtAuthenticationController {
 	@Autowired
 	private UserDetailsService jwtInMemoryUserDetailsService;
 
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> generateAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
 			throws Exception {
@@ -37,9 +41,12 @@ public class JwtAuthenticationController {
 		final UserDetails userDetails = jwtInMemoryUserDetailsService
 				.loadUserByUsername(authenticationRequest.getUsername());
 
+
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new JwtResponse(token));
+		final String idUsuario = usuarioRepository.findIdUsuarioByUsername(authenticationRequest.getUsername());
+
+		return ResponseEntity.ok(new JwtResponse(token,idUsuario));
 	}
 
 	private void authenticate(String username, String password) throws Exception {
