@@ -72,6 +72,7 @@ public class ReporteServiceImpl implements ReporteService {
     @Override
     public byte[] reporteBoleta(RptBoleta rptBoleta) {
         Map<String,Object> p = new HashMap<>();
+
         /*
         LocalDate date = LocalDate.now();
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -81,13 +82,12 @@ public class ReporteServiceImpl implements ReporteService {
         p.put("varEmpresa", rptBoleta.getVarEmpresa());
         p.put("varPeriodo",rptBoleta.getVarPeriodo());
         p.put("varTrabajador",rptBoleta.getVarTrabajador());
-        p.put("varTipoBoleta","1");
+        p.put("varTipoBoleta",1);
         p.put("varTipoPlanilla"," ");
         p.put("varCentroCosto", " ");
         p.put("varArea", " ");
         p.put("varIdEstablecimiento", " ");
         p.put("SUBREPORT_DIR",URL_PATH_REPORT_BOLETA);
-
 
         JasperReport report;
         JasperPrint print;
