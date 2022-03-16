@@ -6,30 +6,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "mg_tz_dato_archivo_persona")
+@Table(name = "rh_in_tz_datos_archivo")
 public class DatoArchivo {
 
     @Id
-    @Column(name = "idDatoArchivoPersona")
-    private String idDatoArchivoPersona;
+    @Column(name = "idDatoArchivo")
+    private String idDatoArchivo;
 
     @Column(name = "idEmpresa")
     private String idEmpresa;
 
-    @Column(name = "idTipoDocumentoIdentidad")
-    private String idTipoDocumentoIdentidad;
-
-    @Column(name = "numeroDocumento")
-    private String numeroDocumento;
-
     @Column(name = "idCodigoRelacional")
     private String idCodigoRelacional;
 
-    @Column(name = "idDocumento")
-    private String idDocumento;
-
     @Column(name = "idProceso")
     private String idProceso;
+
+    @Column(name = "idDocumento")
+    private String idDocumento;
 
     @Column(name = "nombreArchivo")
     private String nombreArchivo;
@@ -43,14 +37,8 @@ public class DatoArchivo {
     @Column(name = "pathArchivo")
     private String pathArchivo;
 
-
-    public String getIdDatoArchivoPersona() {
-        return idDatoArchivoPersona;
-    }
-
-    public void setIdDatoArchivoPersona(String idDatoArchivoPersona) {
-        this.idDatoArchivoPersona = idDatoArchivoPersona;
-    }
+    @Column(name = "inFotoPrincipal")
+    private String inFotoPrincipal;
 
     public String getIdEmpresa() {
         return idEmpresa;
@@ -60,20 +48,20 @@ public class DatoArchivo {
         this.idEmpresa = idEmpresa;
     }
 
-    public String getIdTipoDocumentoIdentidad() {
-        return idTipoDocumentoIdentidad;
+    public String getInFotoPrincipal() {
+        return inFotoPrincipal;
     }
 
-    public void setIdTipoDocumentoIdentidad(String idTipoDocumentoIdentidad) {
-        this.idTipoDocumentoIdentidad = idTipoDocumentoIdentidad;
+    public void setInFotoPrincipal(String inFotoPrincipal) {
+        this.inFotoPrincipal = inFotoPrincipal;
     }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+    public String getIdDatoArchivo() {
+        return idDatoArchivo;
     }
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public void setIdDatoArchivo(String idDatoArchivo) {
+        this.idDatoArchivo = idDatoArchivo;
     }
 
     public String getIdCodigoRelacional() {
@@ -84,20 +72,20 @@ public class DatoArchivo {
         this.idCodigoRelacional = idCodigoRelacional;
     }
 
-    public String getIdDocumento() {
-        return idDocumento;
-    }
-
-    public void setIdDocumento(String idDocumento) {
-        this.idDocumento = idDocumento;
-    }
-
     public String getIdProceso() {
         return idProceso;
     }
 
     public void setIdProceso(String idProceso) {
         this.idProceso = idProceso;
+    }
+
+    public String getIdDocumento() {
+        return idDocumento;
+    }
+
+    public void setIdDocumento(String idDocumento) {
+        this.idDocumento = idDocumento;
     }
 
     public String getNombreArchivo() {

@@ -53,20 +53,16 @@ public class PerfilServiceImpl implements PerfilService {
         DatoArchivo existe = datoArchivoRepository.findByIdCodigoRelacional(id);
 
         if(existe!=null){
-            d.setIdDatoArchivoPersona(existe.getIdDatoArchivoPersona());
+            d.setIdDatoArchivo(existe.getIdDatoArchivo());
         }
 
         d.setIdCodigoRelacional(id);
-        d.setIdEmpresa(Constantes.CODIGO_EMPRESA);
         d.setIdDocumento(Constantes.FOTOGRAFIA);
-        //dumy
-        d.setIdTipoDocumentoIdentidad("1");
-        d.setNumeroDocumento("777777");
         d.setIdProceso("00024");
 
-        if (d.getIdDatoArchivoPersona() == null) {
+        if (d.getIdDatoArchivo() == null) {
             String pk = datoArchivoRepository.generatePrimaryKeyDatoArchivo(Constantes.TABLE_DATO_ARCHIVO, Constantes.ID_TABLE_DATO_ARCHIVO, Constantes.CODIGO_EMPRESA);
-            d.setIdDatoArchivoPersona(pk);
+            d.setIdDatoArchivo(pk);
         }
 
 

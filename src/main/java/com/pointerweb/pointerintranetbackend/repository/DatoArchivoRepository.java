@@ -13,9 +13,9 @@ public interface DatoArchivoRepository extends CrudRepository<DatoArchivo,String
     @Procedure(value = "spu_GeneraCorrelativoAnoMes")
     String generatePrimaryKeyDatoArchivo(String tabla,String campo,String empresa);
 
-    List<DatoArchivo> findByIdCodigoRelacionalAndIdProceso(String id, String proceso);
+    List<DatoArchivo> findByIdCodigoRelacionalAndIdProcesoAndInFotoPrincipal(String id, String proceso,String principal);
 
-    DatoArchivo findByIdDatoArchivoPersona(String idDatoArchivoPersona);
+    DatoArchivo findByIdDatoArchivo(String idDatoArchivoPersona);
 
     DatoArchivo findByIdCodigoRelacional(String IdCodigoRelacional);
 }
