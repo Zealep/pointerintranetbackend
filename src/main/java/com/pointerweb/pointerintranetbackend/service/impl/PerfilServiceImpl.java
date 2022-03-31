@@ -57,6 +57,7 @@ public class PerfilServiceImpl implements PerfilService {
         }
 
         d.setIdCodigoRelacional(id);
+        d.setIdEmpresa(Constantes.CODIGO_EMPRESA);
         d.setIdDocumento(Constantes.FOTOGRAFIA);
         d.setIdProceso("00024");
 
