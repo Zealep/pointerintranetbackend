@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @Service("perfilService")
 public class PerfilServiceImpl implements PerfilService {
@@ -34,7 +35,7 @@ public class PerfilServiceImpl implements PerfilService {
 
         try {
 
-            DatoArchivo d = datoArchivoRepository.findByIdCodigoRelacional(usuario);
+            DatoArchivo d = datoArchivoRepository.findByIdCodigoRelacionalAndIdProceso(usuario,Constantes.PROCESO_MI_PERFIL);
             if(d!=null){
                 String path = URL_PATH_IMAGES + d.getPathArchivo();
                 return FileUtils.readFileToByteArray(new File(FilenameUtils.separatorsToSystem(path)));
@@ -50,7 +51,7 @@ public class PerfilServiceImpl implements PerfilService {
     @Override
     public String uploadFoto(MultipartFile file, String id) {
         DatoArchivo d = new DatoArchivo();
-        DatoArchivo existe = datoArchivoRepository.findByIdCodigoRelacional(id);
+        DatoArchivo existe = datoArchivoRepository.findByIdCodigoRelacionalAndIdProceso(id,Constantes.PROCESO_MI_PERFIL);
 
         if(existe!=null){
             d.setIdDatoArchivo(existe.getIdDatoArchivo());
@@ -59,7 +60,7 @@ public class PerfilServiceImpl implements PerfilService {
         d.setIdCodigoRelacional(id);
         d.setIdEmpresa(Constantes.CODIGO_EMPRESA);
         d.setIdDocumento(Constantes.FOTOGRAFIA);
-        d.setIdProceso("00024");
+        d.setIdProceso(Constantes.PROCESO_MI_PERFIL);
 
         if (d.getIdDatoArchivo() == null) {
             String pk = datoArchivoRepository.generatePrimaryKeyDatoArchivo(Constantes.TABLE_DATO_ARCHIVO, Constantes.ID_TABLE_DATO_ARCHIVO, Constantes.CODIGO_EMPRESA);

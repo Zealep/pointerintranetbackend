@@ -21,6 +21,7 @@ public interface Constantes {
 
     public static final String PROCESO_GALERIA = "00030";
     public static final String PROCESO_NOTICIA = "00031";
+    public static final String PROCESO_MI_PERFIL = "00024";
 
 
 
